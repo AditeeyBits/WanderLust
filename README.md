@@ -55,6 +55,5 @@ Wanderlust is designed as a **Travel Itinerary Builder with Real-Time Updates**,
 ## Contributions
 Contributions and suggestions are welcome! Feel free to fork the repository and submit pull requests.
 
-## License
-This project is open-source and available under the MIT License.
+
 
