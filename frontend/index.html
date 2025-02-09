@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderlust - Travel Planner</title>
+    <link rel="icon" type="image/png" href="assets/logo.png">
+
+    
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    
+
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <img class="logo" src="assets/logo.png" alt="Wanderlust Logo" height="85px" width="140px">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#destinations">Destinations</a></li>
+            <li><a href="#experiences">Experiences</a></li>
+            <li><a href="#planner">Plan Trip</a></li>
+            <li><a href="#login" class="login-btn">Login</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <video class="hero-video" autoplay muted loop>
+            <source src="assets/hero.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Discover Your Next Adventure</h1>
+            <p class="hero-subtitle">"Next Stop: Adventure!"</p>
+            <div class="search-container">
+                <div class="search-box">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <input type="text" placeholder="Where would you like to go?" required>\
+                    <button class="search-btn">
+                        <i class="fas fa-search"></i> Search
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Destinations Section -->
+    <section id="destinations" class="destinations">
+        <h2>Popular Destinations</h2>
+        <div class="destinations-container">
+            <div class="swiper destinations-swiper">
+                <div class="swiper-wrapper" id="destinations-container">
+                    <!-- Destinations will be populated by JavaScript -->
+                </div>
+                <!-- Navigation buttons -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experiences Section -->
+    <section id="experiences" class="experiences">
+        <h2 class="section-title">Unique Experiences</h2>
+        <p class="section-subtitle">Discover extraordinary adventures around the world</p>
+        
+        <div class="experiences-container">
+            <!-- Experience Cards will be dynamically loaded here -->
+        </div>
+
+        <!-- Experience Modal -->
+        <div id="experience-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <div class="modal-body">
+                    <!-- Modal content will be dynamically loaded -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trip Planner Section -->
+    <section id="planner" class="planner">
+        <h2>Plan Your Perfect Trip</h2>
+        <p class="planner-subtitle">Find the best flights and weather information for your next adventure</p>
+        
+        <div class="planner-form">
+            <div class="form-group">
+                <label for="origin">From</label>
+                <input type="text" id="origin" placeholder="Departure City">
+            </div>
+            
+            <div class="form-group">
+                <label for="destination">To</label>
+                <input type="text" id="destination" placeholder="Destination City">
+            </div>
+            
+            <div class="form-group">
+                <label for="departure-date">Departure Date</label>
+                <input type="date" id="departure-date">
+            </div>
+            
+            <div class="form-group">
+                <label for="return-date">Return Date</label>
+                <input type="date" id="return-date">
+            </div>
+            
+            <div class="form-group">
+                <label for="passengers">Passengers</label>
+                <input type="number" id="passengers" min="1" max="9" value="1">
+            </div>
+            
+            <div class="form-group">
+                <label for="class">Class</label>
+                <select id="class">
+                    <option value="ECONOMY">Economy</option>
+                    <option value="PREMIUM_ECONOMY">Premium Economy</option>
+                    <option value="BUSINESS">Business</option>
+                    <option value="FIRST">First</option>
+                </select>
+            </div>
+            
+            <button class="search-trip-btn" onclick="searchFlights()">
+                <i class="fas fa-search"></i> Search Flights
+            </button>
+        </div>
+        
+        <!-- Results grid will be dynamically inserted here when there are results -->
+        <div id="search-results" class="results-grid" style="display: none;"></div>
+    </section>
+
+    <!-- Contact Section -->
+<!-- Contact Section -->
+<section id="contact" class="contact">
+    <div class="contact-header">
+        <h2>Contact Us</h2>
+        <p class="contact-subtitle">Have questions? We'd love to hear from you.</p>
+    </div>
+    
+    <div class="contact-wrapper">
+        <div class="contact-form-container">
+            <div class="contact-card">
+                <div class="contact-methods">
+                    <div class="contact-method">
+                        <i class="fas fa-phone-alt"></i>
+                        <h3>Call Us</h3>
+                        <p>+1 234 567 8900</p>
+                        <span>Monday to Friday, 9am-6pm</span>
+                    </div>
+                    <div class="contact-method">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email Us</h3>
+                        <p>info@wanderlust.com</p>
+                        <span>We'll respond within 24 hours</span>
+                    </div>
+                    <div class="contact-method">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Visit Us</h3>
+                        <p>123 Travel Street</p>
+                        <span>Adventure City, AC 12345</span>
+                    </div>
+                </div>
+                
+                <form class="contact-input-form">
+                    <div class="form-row">
+                        <div class="input-group">
+                            <input type="text" required>
+                            <label>Your Name</label>
+                            <span class="input-highlight"></span>
+                        </div>
+                        <div class="input-group">
+                            <input type="email" required>
+                            <label>Your Email</label>
+                            <span class="input-highlight"></span>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" required>
+                        <label>Subject</label>
+                        <span class="input-highlight"></span>
+                    </div>
+                    <div class="input-group">
+                        <textarea required></textarea>
+                        <label>Your Message</label>
+                        <span class="input-highlight"></span>
+                    </div>
+                    <button type="submit" class="send-message-btn">
+                        Send Message
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section> 
+
+<!-- Footer -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <img src="assets/logo.png" alt="Wanderlust Logo" height="60px">
+            <p>Discover your next adventure with Wanderlust. We make travel planning simple and exciting.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+        
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#destinations">Destinations</a></li>
+                <li><a href="#experiences">Experiences</a></li>
+                <li><a href="#planner">Plan Trip</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-section">
+            <h3>Explore</h3>
+            <ul class="footer-links">
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Travel Blog</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms & Conditions</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-section">
+            <h3>Contact Info</h3>
+            <ul class="footer-links">
+                <li><i class="fas fa-map-marker-alt"></i> 123 Travel Street, City</li>
+                <li><i class="fas fa-phone"></i> +1 234 567 8900</li>
+                <li><i class="fas fa-envelope"></i> info@wanderlust.com</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <p>&copy; 2024 Wanderlust. All rights reserved.</p>
+    </div>
+</footer>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
+    <!-- Custom Scripts -->
+    <script src="js/destinations.js"></script>
+    <script src="js/experiences.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/hero.js"></script>
+</body>
+</html>
